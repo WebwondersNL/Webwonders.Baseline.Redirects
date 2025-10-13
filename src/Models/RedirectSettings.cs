@@ -2,8 +2,8 @@
 
 public class RedirectSettings
 {
-    public List<string>? RedirectUrls { get; set; }
-    public string? RootDomain { get; set; }
+    public List<string>? DomainsToRewriteToWww { get; set; }
+    public string? UmbracoIoUrlReplacement { get; set; }
     public string UmbracoCloudIoSuffix { get; set; } = ".umbraco.io";
     public string DevPrefix { get; set; } = "dev-";
     public string StagingPrefix { get; set; } = "stage-";

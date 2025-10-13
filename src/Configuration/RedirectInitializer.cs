@@ -24,9 +24,9 @@ public static class RedirectInitializer
             var redirectSettings = new RedirectSettings();
             _config.GetSection("Webwonders:Redirects").Bind(redirectSettings);
             
-            if (redirectSettings.RedirectUrls != null && redirectSettings.RedirectUrls.Count > 0)
+            if (redirectSettings.DomainsToRewriteToWww != null && redirectSettings.DomainsToRewriteToWww.Count > 0)
             {
-                foreach (var redirectUrl in redirectSettings.RedirectUrls)
+                foreach (var redirectUrl in redirectSettings.DomainsToRewriteToWww)
                 {
                     rewriteOptions.AddRedirectToWwwPermanent(redirectUrl);
                 }
@@ -53,7 +53,7 @@ public static class RedirectInitializer
                 if (isUmbracoHost && isNotDevOrStage && isNotUmbracoPath && isNotAppPluginsPath &&
                     isNotSmidgeBundle && isCookieNotSet && isNotLocalhost)
                 {
-                    var rootDomain = redirectSettings.RootDomain ?? request.Host.Host;
+                    var rootDomain = redirectSettings.UmbracoIoUrlReplacement ?? request.Host.Host;
                     
                     // Redirect to the specified domain
                     var newPath = $"{rootDomain}{request.Path}";
